@@ -39,12 +39,38 @@ function embaralharComPares(array) {
   return novoArray;
 }
 
-function clique(elemento) {
-    if (elemento.querySelector("img").classList.contains("ativo")) {
-        elemento.querySelector("img").classList.remove("ativo");
-    }
-    else {
+let primeiroClick = false;
+let segundoClick = false;
+let cardbloqueado = [];
+let cart = ["", ""];
+let cart2 = ["", ""];
+
+function clique(elemento, embaralhadas) {
+    if(!primeiroClick) {
         elemento.querySelector("img").classList.add("ativo");
+        cart2[0] = elemento.querySelector.id;
+        cart[0] = elemento.querySelector("img").src
+        primeiroClick = true;
+    }
+    else if(!segundoClick) {
+        elemento.querySelector("img").classList.add("ativo");
+        cart2[1] = elemento.querySelector.id;
+        cart[1] = elemento.querySelector("img").src
+        segundoClick = true;
+
+        if(cart[0] === cart[1]) {
+            primeiroClick = false;
+            segundoClick = false;
+        }
+        else {
+            setTimeout(() => {
+                elemento.querySelector("img").classList.remove("ativo");
+                document.querySelector(`img[id="${cart2[0]}"]`).parentElement.querySelector("img").classList.remove("ativo");
+                document.querySelector(`img[id="${cart2[1]}"]`).parentElement.querySelector("img").classList.remove("ativo");
+                primeiroClick = false;
+                segundoClick = false;
+            }, 1000);
+        }
     }
 }
 
@@ -68,7 +94,7 @@ function atualizarDisplay() {
 
 function iniciarTimer() {
     if (estaRodando) return; // Evita criar múltiplos intervalos
-    
+
     estaRodando = true;
     intervalo = setInterval(() => {
         if (tempoRestante > 0) {
@@ -79,7 +105,8 @@ function iniciarTimer() {
             estaRodando = false;
             alert('O tempo acabou!');
         }
-    }, 4000); // 1000 milissegundos = 1 segundo
+    }, 1000); // 1000 milissegundos = 1 segundo
+    
 }
 
 function pararTimer() {
@@ -140,4 +167,9 @@ function iniciarContagem() {
         }
 
     }, 1000);
+
+
+    const timer = setTimeout(() => {
+        iniciarTimer();
+    }, 4000);
 }
