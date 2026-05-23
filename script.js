@@ -45,6 +45,8 @@ let cardbloqueado = [];
 let cart = ["", ""];
 let cart2 = ["", ""];
 
+/* TODO: arrumar o bug de clicar na mesma carta e ela ficar ativa, mesmo que seja a primeira ou segunda carta, e o bug de clicar em uma carta já combinada e ela ficar ativa, mesmo que seja a primeira ou segunda carta*/
+
 function clique(elemento, embaralhadas) {
     if(!primeiroClick) {
         elemento.querySelector("img").classList.add("ativo");
