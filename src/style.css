@@ -77,6 +77,10 @@ body {
     text-align: center;
 }
 
+.tf{
+    color: #ffffff;
+}
+
 /* =========================
    BOTÕES
 ========================= */
@@ -183,8 +187,12 @@ body {
     background-color: rgba(0,0,0,0.5);
 }
 
+#modalFim, .modalPerdeu{
+    display: none;
+}
+
 .modal-content {
-    background-color: #333333;
+    background-color: #6d6d6d;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -217,4 +225,18 @@ body {
     background-color: rgba(0,0,0,0.7);
 
     z-index: 999;
+}
+
+/* =========================
+    IMGS
+========================= */
+
+img {
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+}
+
+img:not(.ativo) {
+    background-image: none !important;
 }
